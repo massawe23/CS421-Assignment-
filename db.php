@@ -1,14 +1,12 @@
 <?php
-$server_name = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'cs421assignment';
+$host = getenv('DB_HOST') ?: 'mysql-db';
+$user = getenv('DB_USER') ?: 'user';
+$password = getenv('DB_PASSWORD') ?: 'user123';
+$database = getenv('DB_NAME') ?: 'cs421assignment';
 
-// Create connection
-$conn = new mysqli($server_name, $username, $password, $dbname);
+$conn = new mysqli($host, $user, $password, $database);
 
-// Check connection
-if($conn->connect_error){
-    die(json_encode(["error" => "Databas connection failed: " .$conn->connect_error]));
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-
+?>

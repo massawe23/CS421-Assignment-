@@ -1,0 +1,33 @@
+# version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cs421assignment
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user123
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  php-api:
+    build: .
+    container_name: php-api
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql-db
+    environment:
+      - DB_HOST=mysql-db
+      - DB_USER=user
+      - DB_PASSWORD=user123
+      - DB_NAME=cs421assignment
+
+volumes:
+  mysql-data:
