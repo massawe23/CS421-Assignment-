@@ -40,6 +40,20 @@ This repo includes automation scripts for managing the deployed API on an AWS EC
    ```bash
    chmod +x health_check.sh backup_api.sh update_server.sh
 
+
+A simple containerized application using Docker and Docker Compose.
+
+## Features
+- Containerized backend service
+- Easy setup with `docker-compose`
+- Ready for deployment on cloud platforms (e.g., AWS EC2)
+
+## Getting Started
+
+### Prerequisites
+- Docker
+- Docker Compose
+
 ## 🔧 Setup
 1. Clone the repo:  
    ```sh
